@@ -1,0 +1,300 @@
+[
+  {
+    "case_id": "C01",
+    "student_code": "2021023703",
+    "full_name": "Alumno Prueba Principal",
+    "document": "70000001",
+    "phone": "900000001",
+    "scenario": "Matrícula regular",
+    "academic_status": "ACTIVE",
+    "payment": {
+      "status": "PAID",
+      "amount": 450,
+      "expected_amount": 450,
+      "outstanding_debt": 0
+    },
+    "requirements": {
+      "documents_complete": true,
+      "insurance_status": "VALID",
+      "notes": "Datos de prueba controlados"
+    },
+    "recommended_sections": [
+      "2026-II-60-A",
+      "2026-II-61-A",
+      "2026-II-63-A",
+      "2026-II-64-A"
+    ],
+    "expected_final_status": "APPROVED",
+    "expected_agent": "rpa",
+    "expected_reason": "Registro completo; constancia habilitada",
+    "remove_passed_courses": [],
+    "ui_note": "",
+    "remediation_required": false
+  },
+  {
+    "case_id": "C02",
+    "student_code": "2099000002",
+    "full_name": "Ana Torres Vega",
+    "document": "70000002",
+    "phone": "900000002",
+    "scenario": "Estado académico inactivo",
+    "academic_status": "INACTIVE",
+    "payment": {
+      "status": "PAID",
+      "amount": 450,
+      "expected_amount": 450,
+      "outstanding_debt": 0
+    },
+    "requirements": {
+      "documents_complete": true,
+      "insurance_status": "VALID",
+      "notes": "Datos de prueba controlados"
+    },
+    "recommended_sections": [
+      "2026-II-60-A",
+      "2026-II-61-A"
+    ],
+    "expected_final_status": "REJECTED",
+    "expected_agent": "coordinator",
+    "expected_reason": "INACTIVE: no se delega a Académico",
+    "remove_passed_courses": [],
+    "ui_note": "",
+    "remediation_required": false
+  },
+  {
+    "case_id": "C03",
+    "student_code": "2099000003",
+    "full_name": "Bruno Salazar Rojas",
+    "document": "70000003",
+    "phone": "900000003",
+    "scenario": "Cruce de horarios",
+    "academic_status": "ACTIVE",
+    "payment": {
+      "status": "PAID",
+      "amount": 450,
+      "expected_amount": 450,
+      "outstanding_debt": 0
+    },
+    "requirements": {
+      "documents_complete": true,
+      "insurance_status": "VALID",
+      "notes": "Datos de prueba controlados"
+    },
+    "recommended_sections": [
+      "2026-II-63-A",
+      "2026-II-69-A"
+    ],
+    "expected_final_status": "REJECTED",
+    "expected_agent": "academic",
+    "expected_reason": "Dos secciones sábado 08:00-11:00",
+    "remove_passed_courses": [],
+    "ui_note": "",
+    "remediation_required": false
+  },
+  {
+    "case_id": "C04",
+    "student_code": "2099000004",
+    "full_name": "Camila Mendoza Ruiz",
+    "document": "70000004",
+    "phone": "900000004",
+    "scenario": "Prerrequisito no aprobado",
+    "academic_status": "ACTIVE",
+    "payment": {
+      "status": "PAID",
+      "amount": 450,
+      "expected_amount": 450,
+      "outstanding_debt": 0
+    },
+    "requirements": {
+      "documents_complete": true,
+      "insurance_status": "VALID",
+      "notes": "Datos de prueba controlados"
+    },
+    "recommended_sections": [
+      "2026-II-60-A"
+    ],
+    "expected_final_status": "REJECTED",
+    "expected_agent": "academic",
+    "expected_reason": "Falta curso 54, no seleccionar desde UI / forzar API de validación",
+    "remove_passed_courses": [
+      "54"
+    ],
+    "ui_note": "Curso bloqueado desde UI; validar defensa backend con un request autorizado de prueba.",
+    "remediation_required": false
+  },
+  {
+    "case_id": "C05",
+    "student_code": "2099000005",
+    "full_name": "Diego Paredes Soto",
+    "document": "70000005",
+    "phone": "900000005",
+    "scenario": "Deuda pendiente bloqueante",
+    "academic_status": "ACTIVE",
+    "payment": {
+      "status": "PAID",
+      "amount": 450,
+      "expected_amount": 450,
+      "outstanding_debt": 320
+    },
+    "requirements": {
+      "documents_complete": true,
+      "insurance_status": "VALID",
+      "notes": "Datos de prueba controlados"
+    },
+    "recommended_sections": [
+      "2026-II-60-A",
+      "2026-II-61-A"
+    ],
+    "expected_final_status": "REJECTED",
+    "expected_agent": "financial",
+    "expected_reason": "Deuda S/ 320; no se delega al Ejecutor",
+    "remove_passed_courses": [],
+    "ui_note": "",
+    "remediation_required": false
+  },
+  {
+    "case_id": "C06",
+    "student_code": "2099000006",
+    "full_name": "Elena Huamán León",
+    "document": "70000006",
+    "phone": "900000006",
+    "scenario": "Pago pendiente conciliación",
+    "academic_status": "ACTIVE",
+    "payment": {
+      "status": "PENDING",
+      "amount": 450,
+      "expected_amount": 450,
+      "outstanding_debt": 0
+    },
+    "requirements": {
+      "documents_complete": true,
+      "insurance_status": "VALID",
+      "notes": "Datos de prueba controlados"
+    },
+    "recommended_sections": [
+      "2026-II-60-A",
+      "2026-II-61-A"
+    ],
+    "expected_final_status": "OBSERVED",
+    "expected_agent": "financial",
+    "expected_reason": "Admin regulariza a PAID y estudiante revalida",
+    "remove_passed_courses": [],
+    "ui_note": "",
+    "remediation_required": true
+  },
+  {
+    "case_id": "C07",
+    "student_code": "2099000007",
+    "full_name": "Fabio Chávez Díaz",
+    "document": "70000007",
+    "phone": "900000007",
+    "scenario": "Monto pagado distinto",
+    "academic_status": "ACTIVE",
+    "payment": {
+      "status": "MISMATCH",
+      "amount": 130,
+      "expected_amount": 450,
+      "outstanding_debt": 0
+    },
+    "requirements": {
+      "documents_complete": true,
+      "insurance_status": "VALID",
+      "notes": "Datos de prueba controlados"
+    },
+    "recommended_sections": [
+      "2026-II-60-A",
+      "2026-II-61-A"
+    ],
+    "expected_final_status": "OBSERVED",
+    "expected_agent": "financial",
+    "expected_reason": "Admin corrige monto y estado, luego revalidar",
+    "remove_passed_courses": [],
+    "ui_note": "",
+    "remediation_required": true
+  },
+  {
+    "case_id": "C08",
+    "student_code": "2099000008",
+    "full_name": "Gabriela Ramírez Peña",
+    "document": "70000008",
+    "phone": "900000008",
+    "scenario": "Documento vencido",
+    "academic_status": "ACTIVE",
+    "payment": {
+      "status": "PAID",
+      "amount": 450,
+      "expected_amount": 450,
+      "outstanding_debt": 0
+    },
+    "requirements": {
+      "documents_complete": true,
+      "insurance_status": "EXPIRED",
+      "notes": "Datos de prueba controlados"
+    },
+    "recommended_sections": [
+      "2026-II-60-A",
+      "2026-II-61-A"
+    ],
+    "expected_final_status": "OBSERVED",
+    "expected_agent": "financial",
+    "expected_reason": "Admin regulariza vigencia y revalidar",
+    "remove_passed_courses": [],
+    "ui_note": "",
+    "remediation_required": true
+  },
+  {
+    "case_id": "C09",
+    "student_code": "2099000009",
+    "full_name": "Hugo Flores Castro",
+    "document": "70000009",
+    "phone": "900000009",
+    "scenario": "Sección sin vacantes",
+    "academic_status": "ACTIVE",
+    "payment": {
+      "status": "PAID",
+      "amount": 450,
+      "expected_amount": 450,
+      "outstanding_debt": 0
+    },
+    "requirements": {
+      "documents_complete": true,
+      "insurance_status": "VALID",
+      "notes": "Datos de prueba controlados"
+    },
+    "recommended_sections": [
+      "2026-II-62-A"
+    ],
+    "expected_final_status": "REJECTED",
+    "expected_agent": "academic",
+    "expected_reason": "Sección 62 está FULL; UI la muestra bloqueada",
+    "remove_passed_courses": [],
+    "ui_note": "Curso bloqueado desde UI; validar defensa backend con un request autorizado de prueba.",
+    "remediation_required": false
+  },
+  {
+    "case_id": "C10",
+    "student_code": "2099000010",
+    "full_name": "Ivana Ortiz Silva",
+    "document": "70000010",
+    "phone": "900000010",
+    "scenario": "Requisitos sin expediente",
+    "academic_status": "ACTIVE",
+    "payment": {
+      "status": "PAID",
+      "amount": 450,
+      "expected_amount": 450,
+      "outstanding_debt": 0
+    },
+    "requirements": null,
+    "recommended_sections": [
+      "2026-II-60-A",
+      "2026-II-61-A"
+    ],
+    "expected_final_status": "OBSERVED",
+    "expected_agent": "financial",
+    "expected_reason": "Admin registra requisitos y revalida",
+    "remove_passed_courses": [],
+    "ui_note": "",
+    "remediation_required": true
+  }
+]
