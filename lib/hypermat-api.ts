@@ -1,4 +1,5 @@
-export const API_BASE_URL = (process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000").replace(/\/$/, "");
+// Same-origin requests let the Cloudflare Worker proxy API calls and record agent handoffs.
+export const API_BASE_URL = "";
 
 export type UserRole = "STUDENT" | "ADMIN";
 export type SessionUser = { email: string; role: UserRole; student_code?: string | null; full_name: string };

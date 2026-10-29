@@ -25,7 +25,7 @@ npm install
 npm run dev
 ```
 
-Crear `.env.local` en el frontend con `NEXT_PUBLIC_API_BASE_URL=http://localhost:8000`; configurar `FRONTEND_ORIGIN` backend según URL efectiva del frontend.
+En local, el Worker envía `/api/*` a `http://localhost:8000` por defecto. Para otro destino, configura `API_ORIGIN`; en Render, ajusta `FRONTEND_ORIGIN` al dominio del portal.
 
 ## Endpoints para mostrar evidencia
 
@@ -65,9 +65,9 @@ Estos tests comprueban las reglas puras de estados y horarios; **no prueban inte
 
 ## Despliegue gratuito sin Docker
 
-La entrega se realizará con **Cloudflare Pages (frontend estático Next.js)** + **Render Free (FastAPI)** + **MongoDB Atlas**. Consulta `../DESPLIEGUE_CLOUDFLARE_RENDER.md` para los comandos y las variables.
+La entrega se realizará con **Cloudflare Worker (portal y proxy de API)** + **Render Free (FastAPI)** + **MongoDB Atlas**. Consulta `../DESPLIEGUE_CLOUDFLARE_RENDER.md` para los comandos y las variables.
 
-En Render, configurar raíz `backend`, build `pip install -r requirements.txt` y start `uvicorn app.main:app --host 0.0.0.0 --port $PORT`. En Cloudflare Pages, compilar `pnpm run build:pages` y publicar directorio `out`, con variable `NEXT_PUBLIC_API_BASE_URL` apuntando a la API HTTPS real. No se usan Dockerfile ni docker-compose.
+En Render, configurar raíz `backend`, build `pip install -r requirements.txt` y start `uvicorn app.main:app --host 0.0.0.0 --port $PORT`. En Cloudflare Workers, compilar `npm run build`, desplegar `dist/server/wrangler.json` y configurar `API_ORIGIN` con la URL HTTPS de Render. No se usan Dockerfile ni docker-compose.
 
 Render Free no permite SMTP en puertos 25/465/587. Se añadió **Resend HTTP API** opcional mediante `RESEND_API_KEY` y `RESEND_FROM` (requiere un remitente validado por el proveedor); sin proveedor de correo configurado, el estado es `SIMULATED`.
 

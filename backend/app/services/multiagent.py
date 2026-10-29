@@ -70,6 +70,7 @@ class Context:
     selected: list[dict] = field(default_factory=list)
     credits: int = 0
     findings: dict = field(default_factory=dict)
+    handoffs: list[dict] = field(default_factory=list)
     seq: int = 0
     steps: int = 0
 
@@ -105,6 +106,7 @@ class Context:
             "created_at": now(),
         }
         self.db.agent_messages.insert_one(message)
+        self.handoffs.append({"sender": sender, "receiver": receiver, "status": status})
         self.event(sender, "HANDOFF", status=status, detail={"to": receiver, "message_id": message["message_id"]})
 
 
@@ -410,7 +412,7 @@ async def orchestrate(request: dict, db: Database, *, confirm: bool) -> dict:
                                     "event_type": "FINAL_VALIDATION" if confirm else "PRE_VALIDATION",
                                     "actor": "multiagent_supervisor", "created_at": now()})
         db.orchestration_runs.update_one({"run_id": run_id}, {"$set": {"status": outcome, "completed_at": now(), "duration_ms": round((time.perf_counter()-start)*1000), "agents_executed": [d["agent"] for d in docs]}})
-        return {"request_id": ctx.request_id, "run_id": run_id, "status": outcome, "credits": ctx.credits, "verdicts": docs, "agents_executed": [d["agent"] for d in docs]}
+        return {"request_id": ctx.request_id, "run_id": run_id, "status": outcome, "credits": ctx.credits, "verdicts": docs, "agents_executed": [d["agent"] for d in docs], "handoffs": ctx.handoffs}
     except Exception as exc:
         ctx.event("supervisor", "ERROR", status="FAILED", detail={"error_type": type(exc).__name__})
         db.orchestration_runs.update_one({"run_id": run_id}, {"$set": {"status": "FAILED", "completed_at": now(), "error_type": type(exc).__name__}})

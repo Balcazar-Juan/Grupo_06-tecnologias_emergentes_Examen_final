@@ -27,4 +27,4 @@ La API `GET /api/enrollment-requests/{id}/trace` devuelve `run_id`, `agent_trace
 
 ## Hosting para entrega final
 
-La modalidad seleccionada es **Cloudflare Pages + Render Free + MongoDB Atlas**, sin Docker. Revisa [`DESPLIEGUE_CLOUDFLARE_RENDER.md`](./DESPLIEGUE_CLOUDFLARE_RENDER.md).
+La modalidad seleccionada es **Cloudflare Worker + Render Free + MongoDB Atlas**, sin Docker. Revisa [`DESPLIEGUE_CLOUDFLARE_RENDER.md`](./DESPLIEGUE_CLOUDFLARE_RENDER.md).

@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
-// Despliegue del portal en Cloudflare Pages: sin SSR ni backend Next.js.
-// Las solicitudes de negocio se realizan desde el navegador a FastAPI en Render.
+// El portal conserva la exportación estática; el Worker sirve los archivos
+// y reenvía las solicitudes /api/* a FastAPI en Render.
 const nextConfig: NextConfig = {
   output: "export",
   images: { unoptimized: true },
