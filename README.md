@@ -18,7 +18,7 @@ Sistema web de matrícula universitaria con validación multiagente. Verifica la
 - **Cloudflare Worker:** sirve el frontend, reenvía las solicitudes `/api/*` y registra los eventos de comunicación entre agentes.
 - **Backend:** FastAPI ejecutándose en Render.
 - **Base de datos:** MongoDB Atlas.
-- **IA opcional:** Google Gemini para generar explicaciones.
+- **IA:** Google Gemini para manejo de agentes.
 - **Correo opcional:** Resend o SMTP.
 
 ## Requisitos
